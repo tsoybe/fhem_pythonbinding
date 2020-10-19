@@ -42,8 +42,8 @@ async def pybinding(websocket, path):
             asyncio.create_task(pb.onMessage(message))
     except websockets.exceptions.ConnectionClosedError:
         logger.error("Connection closed error", exc_info=True)
-        logger.info("Waiting for new FHEM connection...")
-        del pb
+        logger.info("Restart binding")
+        sys.exit()
 
 class PyBinding:
 
@@ -69,7 +69,7 @@ class PyBinding:
         fhem.setFunctionInactive(hash)        
 
     async def sendBackError(self, hash, error):
-        logger.error(error + "(id: " + hash['id'] + ")")
+        logger.error(error + "(id: {})".format(hash['id']))
         retHash = hash.copy()
         retHash['finished'] = 1
         retHash['error'] = error
@@ -98,6 +98,12 @@ class PyBinding:
             return logging.ERROR
 
     async def onMessage(self, payload):
+        try:
+            await self._onMessage(payload)
+        except:
+            logger.exception("Failed to handle message: " + str(payload))
+
+    async def _onMessage(self, payload):
         msg = payload
         logger.debug(">>> WS: " + msg)
         hash = None
