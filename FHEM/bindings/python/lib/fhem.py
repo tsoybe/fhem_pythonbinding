@@ -63,6 +63,16 @@ async def readingsBulkUpdateIfChanged(hash, reading, value):
         reading + "','" + value.replace("'", "\\'") + "');;"
     return await sendCommandHash(hash, cmd)
 
+async def readingsBulkUpdate(hash, reading, value, changed=None):
+    value = convertValue(value)
+    if changed is None:
+        cmd = "readingsBulkUpdate($defs{'" + hash["NAME"] + "'},'" + \
+            reading + "','" + value.replace("'", "\\'") + "');;"
+    else:
+        cmd = "readingsBulkUpdate($defs{'" + hash["NAME"] + "'},'" + \
+            reading + "','" + value.replace("'", "\\'") + "', " + str(changed) + ");;"
+    return await sendCommandHash(hash, cmd)
+
 async def readingsEndUpdate(hash, do_trigger):
     cmd = "readingsEndUpdate($defs{'" + hash["NAME"] + "'}," + str(do_trigger) + ");;"
     res = await sendCommandHash(hash,cmd)
@@ -92,6 +102,10 @@ async def CommandDefine(hash, definition):
 
 async def CommandAttr(hash, attrdef):
     cmd = "CommandAttr(undef, \"" + attrdef + "\")"
+    return await sendCommandHash(hash, cmd)
+
+async def CommandDeleteReading(hash, deldef):
+    cmd = "CommandDeleteReading(undef, \"" + deldef + "\")"
     return await sendCommandHash(hash, cmd)
 
 async def checkIfDeviceExists(hash, typeinternal, typevalue, internal, value):
@@ -130,7 +144,7 @@ async def send_and_wait(name, cmd):
 
     global wsconnection
     wsconnection.registerMsgListener(listener, msg['awaitId'])
-    msg = json.dumps(msg)
+    msg = json.dumps(msg, ensure_ascii=False)
     logger.debug("<<< WS: " + msg)
     try:
         await wsconnection.send(msg)

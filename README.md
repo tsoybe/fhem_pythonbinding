@@ -5,8 +5,9 @@ FHEM Python binding allows the usage of Python 3 (NOT 2!) language to write FHEM
 This repository includes following working modules:
 Module | Description
 -------|--------------
-ble_presence|Presence detection incl. RSSI
+ble_presence|Presence detection incl. RSSI for Bluetooth Low Energy
 ble_reset|Resets all Bluetooth interfaces every X hours
+[bt_presence](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/bt_presence/README.md)|Presence detection incl. RSSI for Bluetooth
 discover_mdns|Discover mDNS devices
 discover_ble|Discover Bluetooth LE devices
 discover_upnp|Discover UPnP devices
@@ -15,7 +16,9 @@ eq3bt|Control EQ3 Bluetooth thermostat
 googlecast|Control Cast devices
 helloworld|Hello World example
 [nespresso_ble](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/nespresso_ble/README.md)|Nespresso Bluetooth coffee machine
+[object_detection](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/object_detection/README.md)|TensorFlow Lite object detection
 [ring](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/ring/README.md)|Ring doorbell/chime/cam
+[wienerlinien](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/wienerlinien/README.md)|Wiener Linien departure times
 xiaomi_gateway3|Xiaomi Gateway V3 (only V3!)
 [xiaomi_tokens](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/xiaomi_tokens/README.md)|Retrieve all Xiaomi Tokens from Cloud
 
