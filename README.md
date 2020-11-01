@@ -1,4 +1,4 @@
-# FHEM Python Binding (BETA, might not be stable!)
+# FHEM Python Binding (BETA)
 
 FHEM Python binding allows the usage of Python 3 (NOT 2!) language to write FHEM modules
 
@@ -6,15 +6,16 @@ This repository includes following working modules:
 Module | Description
 -------|--------------
 ble_presence|Presence detection incl. RSSI for Bluetooth Low Energy
-ble_reset|Resets all Bluetooth interfaces every X hours
+[ble_reset](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/ble_reset/README.md)|Resets all Bluetooth interfaces every X hours
 [bt_presence](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/bt_presence/README.md)|Presence detection incl. RSSI for Bluetooth
 discover_mdns|Discover mDNS devices
 discover_ble|Discover Bluetooth LE devices
 discover_upnp|Discover UPnP devices
 dlna_dmr|Control DLNA MediaRenderer devices)
-eq3bt|Control EQ3 Bluetooth thermostat
+[eq3bt](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/eq3bt/README.md)|Control EQ3 Bluetooth thermostat
 googlecast|Control Cast devices
 helloworld|Hello World example
+[miio](https://github.com/dominikkarall/fhem_pythonbinding/tree/master/FHEM/bindings/python/lib/miio/README.md)|Control Xiaomi WiFi devices
 [nespresso_ble](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/nespresso_ble/README.md)|Nespresso Bluetooth coffee machine
 [object_detection](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/object_detection/README.md)|TensorFlow Lite object detection
 [ring](https://github.com/dominikkarall/fhem_pythonbinding/blob/master/FHEM/bindings/python/lib/ring/README.md)|Ring doorbell/chime/cam
@@ -25,7 +26,7 @@ xiaomi_gateway3|Xiaomi Gateway V3 (only V3!)
 ## Installation
 Python >=3.7 is required, Python 2 won't work!
 
-Console
+### Console
 ```
 sudo apt install python3 python3-pip
 
@@ -33,7 +34,7 @@ sudo cpan Protocol::WebSocket
 
 sudo pip3 install asyncio websockets importlib_metadata
 ```
-FHEM
+### FHEM
 ```
 update add https://raw.githubusercontent.com/dominikkarall/fhem_pythonbinding/master/controls_pythonbinding.txt
 

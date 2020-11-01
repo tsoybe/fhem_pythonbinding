@@ -14,6 +14,9 @@ function_active = []
 update_locks = {}
 wsconnection = None
 
+# TODO use run_coroutine_threadsafe if asyncio.get_event_loop() == None
+# this would make all functions threadsafe
+
 def updateConnection(ws):
     global wsconnection
     wsconnection = ws
@@ -165,7 +168,7 @@ async def sendCommandName(name, cmd, hash=None):
         while len(function_active) != 0:
             if function_active[-1] == name:
                 break
-            await asyncio.sleep(0.01)
+            await asyncio.sleep(0.001)
         # wait max 1s for reply from FHEM
         jsonmsg = await asyncio.wait_for(send_and_wait(name, cmd), 15)
         logger.debug("sendCommandName END")
